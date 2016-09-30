@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/karlspalding/sass-lint-brunch.svg?branch=master)](https://travis-ci.org/karlspalding/sass-lint-brunch)
+[![NPM Package](https://img.shields.io/npm/v/sass-lint-brunch.svg)](https://www.npmjs.org/package/sass-lint-brunch)
 
 sass-lint-brunch
 ===================
