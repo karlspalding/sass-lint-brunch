@@ -6,8 +6,7 @@ class SassLint {
     constructor (config) {
         this.config = config && config.plugins && config.plugins.sassLint || {
             file: '.sass-lint.yml',
-            options: {},
-            output: true
+            options: {}
         };
     }
 
@@ -22,11 +21,9 @@ class SassLint {
             return Promise.resolve();
         }
 
-        if (this.config.output) {
-            lint.outputResults([result]);
-        }
-        
-        return Promise.reject(null);
+        let formattedResults = lint.format([result]);
+
+        return Promise.reject(formattedResults);
     }
 }
 

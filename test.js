@@ -10,7 +10,6 @@ describe('Plugin', () => {
         plugin = new Plugin({
             plugins: {
                 sassLint: {
-                    output: false,
                     file: null,
                     options: {}
                 }
@@ -38,13 +37,13 @@ describe('Plugin', () => {
             });
         });
         
-        it('should fail on errors', () => {
+        it('should return a rejected Promise with error details on failure', () => {
             const data = '.test { display: none; }';
 
             return plugin.lint(data).then(() => {
                 expect(false).to.be.ok; 
-            }, result => {
-                expect(result).to.be.null;
+            }, (errorMessage) => {
+                expect(errorMessage).to.be.string;
             });
         });
 
