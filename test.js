@@ -28,11 +28,11 @@ describe('Plugin', () => {
 
     describe('#lint()', () => {
 
-        it('should return the file unchanged', () => {
+        it('should return a resolved Promise on success', () => {
             const data = '.test { display: none; }\n';
 
-            return plugin.lint(data).then(result => {
-                expect(result).to.equal(data);
+            return plugin.lint(data).then(() => {
+                expect(true).to.be.ok;
             }, () => {
                 expect(false).to.be.ok; 
             });

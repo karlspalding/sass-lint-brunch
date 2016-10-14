@@ -19,7 +19,7 @@ class SassLint {
         }, this.config.options, this.config.file);
 
         if (result.warningCount === 0 && result.errorCount === 0) {
-            return Promise.resolve(data); 
+            return Promise.resolve();
         }
 
         if (this.config.output) {
