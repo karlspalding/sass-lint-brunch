@@ -3,11 +3,10 @@
 var lint = require('sass-lint');
 
 class SassLint {
-    constructor (config) {
-        this.config = config && config.plugins && config.plugins.sassLint || {
-            file: '.sass-lint.yml',
-            options: {}
-        };
+    constructor (brunchConfig) {
+        const cfg = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.sassLint) || {};
+        this.linterConfigFile = cfg.file    || '.sass-lint.yml';
+        this.linterOptions    = cfg.options || {};
     }
 
     lint (data, path) {
@@ -15,7 +14,7 @@ class SassLint {
             text: data,
             format: 'scss',
             filename: path
-        }, this.config.options, this.config.file);
+        }, this.linterOptions, this.linterConfigFile);
 
         if (result.warningCount === 0 && result.errorCount === 0) {
             return Promise.resolve();
