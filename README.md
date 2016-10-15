@@ -27,7 +27,8 @@ The following defaults can be overridden in `brunch-config.js`:
       file: '.sass-lint.yml',
       options: {
         ...
-      }
+      },
+      warnOnly: false
     }
   }
   ... 
@@ -38,3 +39,7 @@ The `file` field can be used to specify an alternative YAML configuration for
 `sass-lint`.
 
 The `options` field is passed through unchanged to `sass-lint`.
+
+If the `warnOnly` field is set to `true`, then linting failures will be
+reported as warnings instead of errors, allowing Brunch to continue
+compiling the affected source file(s) even if linting failures occur.

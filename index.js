@@ -7,6 +7,7 @@ class SassLint {
         const cfg = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.sassLint) || {};
         this.linterConfigFile = cfg.file    || '.sass-lint.yml';
         this.linterOptions    = cfg.options || {};
+        this.warnOnly         = (typeof cfg.warnOnly === 'boolean') ? cfg.warnOnly : false;
     }
 
     lint (data, path) {
@@ -21,6 +22,10 @@ class SassLint {
         }
 
         let formattedResults = lint.format([result]);
+
+        if (this.warnOnly) {
+            formattedResults = 'warn: ' + formattedResults;
+        }
 
         return Promise.reject(formattedResults);
     }
